@@ -87,8 +87,8 @@ export default function Clients() {
                         href={href ?? "#contact"}
                         target={href ? "_blank" : undefined}
                         rel={href ? "noreferrer noopener" : undefined}
-                        className="flex items-center justify-center shrink-0 px-4 py-3 transition-transform duration-300 hover:scale-105"
-                        style={{ width: 220, height: 110 }}
+                        className="flex items-center justify-center shrink-0 rounded-[2rem] border border-gray-200 bg-white px-4 py-3 shadow-sm transition-transform duration-300 hover:scale-105"
+                        style={{ width: 220, height: 220 }}
                       >
                         {restaurant.logo ? (
                           <img
