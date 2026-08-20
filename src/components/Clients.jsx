@@ -6,6 +6,20 @@ const COLUMNS_PER_ROW = 6;
 const VISIBLE_COUNT = INITIAL_ROWS * COLUMNS_PER_ROW;
 const EXPANDED_COUNT = EXPANDED_ROWS * COLUMNS_PER_ROW;
 
+// Priority order for restaurant "type" — lower index sorts first.
+// Unrecognized/missing types are pushed to the end, in original order.
+const TYPE_ORDER = ["mega", "super", "a", "b", "c", "c-"];
+
+function sortByType(items) {
+  return [...items].sort((a, b) => {
+    const rankA = TYPE_ORDER.indexOf((a.type ?? "").toLowerCase());
+    const rankB = TYPE_ORDER.indexOf((b.type ?? "").toLowerCase());
+    const safeRankA = rankA === -1 ? TYPE_ORDER.length : rankA;
+    const safeRankB = rankB === -1 ? TYPE_ORDER.length : rankB;
+    return safeRankA - safeRankB;
+  });
+}
+
 export default function Clients() {
   const [restaurants, setRestaurants] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -24,7 +38,7 @@ export default function Clients() {
       })
       .then((data) => {
         const items = data?.data?.data ?? [];
-        setRestaurants(items);
+        setRestaurants(sortByType(items));
       })
       .catch((err) => {
         if (err.name !== "AbortError") {
