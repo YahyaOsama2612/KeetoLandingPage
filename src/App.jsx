@@ -20,7 +20,7 @@ function App() {
         <Clients />
         <Features />
         <About />
-    {/*     <Pricing /> */}
+        <Pricing />
         <Journey />
         <Services />
         <Testimonials />

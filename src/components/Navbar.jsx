@@ -6,7 +6,7 @@ import logo from "../assets/logo.webp";
 const links = [
   { label: "Features", href: "#features" },
   { label: "About", href: "#about" },
-  /*  { label: "Pricing", href: "#pricing" }, */
+  { label: "Pricing", href: "#pricing" },
   { label: "How it works", href: "#journey" },
   { label: "Reviews", href: "#testimonials" },
   { label: "FAQ", href: "#faq" },
