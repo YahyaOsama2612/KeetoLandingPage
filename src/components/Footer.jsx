@@ -1,22 +1,50 @@
+import { useState, useCallback } from "react";
 import { FaFacebookF, FaInstagram } from "react-icons/fa6";
 import logo from "../assets/logo.webp";
+import LegalModal from "./LegalModal";
 
+// Links with a `legal` key open the modal on that tab; the rest stay as anchors.
 const columns = [
   {
     title: "Product",
-    links: ["Features", "Pricing", "How it works", "Integrations"],
+    links: [
+      { label: "Features" },
+      { label: "Pricing" },
+      { label: "How it works" },
+      { label: "Integrations" },
+    ],
   },
   {
     title: "Company",
-    links: ["About us", "Careers", "Blog", "Contact"],
+    links: [
+      { label: "About us", legal: "about-us" },
+      { label: "Careers" },
+      { label: "Blog" },
+      { label: "Contact" },
+    ],
   },
   {
     title: "Resources",
-    links: ["Help center", "API docs", "Community", "Status"],
+    links: [
+      { label: "Help center" },
+      { label: "API docs" },
+      { label: "Community" },
+      { label: "Status" },
+    ],
   },
 ];
 
+const legalLinks = [
+  { label: "Privacy policy", legal: "privacy-policy" },
+  { label: "Terms of service", legal: "terms-conditions" },
+  { label: "Refund policy", legal: "refund-policy" },
+];
+
 export default function Footer() {
+  const [activeLegalTab, setActiveLegalTab] = useState(null);
+
+  const closeLegal = useCallback(() => setActiveLegalTab(null), []);
+
   return (
     <footer className="bg-secondary text-white pt-20 pb-8">
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
@@ -59,13 +87,23 @@ export default function Footer() {
               <h4 className="font-semibold text-sm mb-4">{col.title}</h4>
               <ul className="flex flex-col gap-3">
                 {col.links.map((l) => (
-                  <li key={l}>
-                    <a
-                      href="#top"
-                      className="text-sm text-white/60 hover:text-primary transition-colors"
-                    >
-                      {l}
-                    </a>
+                  <li key={l.label}>
+                    {l.legal ? (
+                      <button
+                        type="button"
+                        onClick={() => setActiveLegalTab(l.legal)}
+                        className="text-sm text-white/60 hover:text-primary transition-colors text-left"
+                      >
+                        {l.label}
+                      </button>
+                    ) : (
+                      <a
+                        href="#top"
+                        className="text-sm text-white/60 hover:text-primary transition-colors"
+                      >
+                        {l.label}
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -76,15 +114,25 @@ export default function Footer() {
         <div className="mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/50">
           <p>&copy; {new Date().getFullYear()} Keeto. All rights reserved.</p>
           <div className="flex items-center gap-6">
-            <a href="#top" className="hover:text-primary transition-colors">
-              Privacy policy
-            </a>
-            <a href="#top" className="hover:text-primary transition-colors">
-              Terms of service
-            </a>
+            {legalLinks.map((l) => (
+              <button
+                key={l.legal}
+                type="button"
+                onClick={() => setActiveLegalTab(l.legal)}
+                className="hover:text-primary transition-colors"
+              >
+                {l.label}
+              </button>
+            ))}
           </div>
         </div>
       </div>
+
+      <LegalModal
+        activeTab={activeLegalTab}
+        onClose={closeLegal}
+        onSelectTab={setActiveLegalTab}
+      />
     </footer>
   );
 }
