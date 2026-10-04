@@ -3,33 +3,21 @@ import { FaFacebookF, FaInstagram } from "react-icons/fa6";
 import logo from "../assets/logo.webp";
 import LegalModal from "./LegalModal";
 
-// Links with a `legal` key open the modal on that tab; the rest stay as anchors.
+// Links with a `legal` key open the modal on that tab; `href` anchors scroll to a section.
 const columns = [
   {
     title: "Product",
     links: [
-      { label: "Features" },
-      { label: "Pricing" },
-      { label: "How it works" },
-      { label: "Integrations" },
+      { label: "Features", href: "#features" },
+      { label: "Pricing", href: "#pricing" },
+      { label: "How it works", href: "#journey" },
     ],
   },
   {
     title: "Company",
     links: [
-      { label: "About us", legal: "about-us" },
-      { label: "Careers" },
-      { label: "Blog" },
-      { label: "Contact" },
-    ],
-  },
-  {
-    title: "Resources",
-    links: [
-      { label: "Help center" },
-      { label: "API docs" },
-      { label: "Community" },
-      { label: "Status" },
+      { label: "About us", href: "#about" },
+      { label: "Contact", href: "#contact" },
     ],
   },
 ];
@@ -98,7 +86,7 @@ export default function Footer() {
                       </button>
                     ) : (
                       <a
-                        href="#top"
+                        href={l.href}
                         className="text-sm text-white/60 hover:text-primary transition-colors"
                       >
                         {l.label}
