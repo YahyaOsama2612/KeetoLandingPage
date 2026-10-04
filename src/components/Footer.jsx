@@ -18,6 +18,7 @@ const columns = [
     links: [
       { label: "About us", href: "#about" },
       { label: "Contact", href: "#contact" },
+      { label: "Refund policy", legal: "refund-policy" },
     ],
   },
 ];
@@ -25,7 +26,7 @@ const columns = [
 const legalLinks = [
   { label: "Privacy policy", legal: "privacy-policy" },
   { label: "Terms of service", legal: "terms-conditions" },
-  { label: "Refund policy", legal: "refund-policy" },
+
 ];
 
 export default function Footer() {
