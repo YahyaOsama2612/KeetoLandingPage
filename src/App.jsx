@@ -17,7 +17,7 @@ function App() {
       <Navbar />
       <main>
         <Hero />
-        <Clients />
+       {/*  <Clients /> */}
         <Features />
         <About />
         <Pricing />
