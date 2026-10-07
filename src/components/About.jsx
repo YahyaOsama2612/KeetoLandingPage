@@ -24,8 +24,8 @@ export default function About() {
           <p className="mt-5 text-text-muted text-lg leading-relaxed">
             We started Keeto after watching too many kitchens juggle four
             different tablets for four different apps. So we built the one
-            system we wished we'd had — simple enough for a two-person café,
-            sturdy enough for a twelve-location group.
+            operations management system we wished we'd had — simple enough
+            for a two-person café, sturdy enough for a twelve-location group.
           </p>
 
           <ul className="mt-8 flex flex-col gap-4">

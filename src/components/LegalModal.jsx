@@ -52,7 +52,7 @@ export default function LegalModal({ activeTab, onClose, onSelectTab }) {
               <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-accent">
                 <span>Keeto Restaurant Platform</span>
                 <span>•</span>
-                <span>SaaS Customized</span>
+                <span>Operations Management</span>
               </div>
               <h3 className="text-xl sm:text-2xl font-bold text-secondary mt-0.5">
                 {currentData.title}
@@ -113,7 +113,7 @@ export default function LegalModal({ activeTab, onClose, onSelectTab }) {
 
           {/* Footer inside Modal */}
           <div className="px-6 py-4 border-t border-border bg-slate-50/80 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-text-muted shrink-0">
-            <span>© {new Date().getFullYear()} Keeto SaaS Operating System. All rights reserved.</span>
+            <span>© {new Date().getFullYear()} Keeto Restaurant Operations Management Platform. All rights reserved.</span>
             <button
               onClick={onClose}
               className="px-5 py-2 bg-secondary text-white hover:bg-secondary/90 font-semibold rounded-xl text-xs transition-colors"

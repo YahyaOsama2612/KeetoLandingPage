@@ -1,11 +1,11 @@
 export const legalData = {
   "refund-policy": {
     title: "Refund Policy",
-    subtitle: "Customized for Keeto Restaurant Operating System (SaaS)",
+    subtitle: "Customized for Keeto Restaurant Operations Management Platform",
     updated: "Last updated: September 2026",
     sections: [
       {
-        heading: "1. SaaS Subscription Refund Policy",
+        heading: "1. Operations Management Subscription Refund Policy",
         content: `Keeto provides a 14-day risk-free money-back guarantee for all new restaurant subscription plans (Starter, Growth, and Enterprise). If you choose to cancel your subscription within 14 days of your initial payment, you are eligible for a 100% full refund with no questions asked.`
       },
       {
@@ -14,7 +14,7 @@ export const legalData = {
       },
       {
         heading: "3. Direct Diner Order Refunds (Non-Marketplace Notice)",
-        content: `Keeto is a B2B Software-as-a-Service (SaaS) provider equipping individual restaurants with direct online ordering, QR table ordering, and kitchen display systems (KDS). Keeto is NOT a consumer food delivery marketplace (like food delivery aggregators). All diner food order refunds, cancellations, or quality claims are handled directly between the restaurant and the diner through the restaurant's merchant dashboard.`
+        content: `Keeto is a B2B restaurant operations management provider equipping individual restaurants with direct online ordering, QR table ordering, and kitchen display systems (KDS). Keeto is NOT a consumer food delivery marketplace (like food delivery aggregators). All diner food order refunds, cancellations, or quality claims are handled directly between the restaurant and the diner through the restaurant's merchant dashboard.`
       },
       {
         heading: "4. Hardware & POS Accessories",
@@ -33,7 +33,7 @@ export const legalData = {
     sections: [
       {
         heading: "1. Platform Purpose & Scope",
-        content: `Keeto delivers cloud-based software enabling single and multi-location restaurants to manage dine-in ordering, direct online pickup/delivery, kitchen displays, and inventory. Keeto operates strictly as a technology SaaS provider and not as a food marketplace or food delivery broker.`
+        content: `Keeto delivers a cloud-based restaurant operations management platform enabling single and multi-location restaurants to manage dine-in ordering, direct online pickup/delivery, kitchen displays, and inventory. Keeto operates strictly as a restaurant operations management provider and not as a food marketplace or food delivery broker.`
       },
       {
         heading: "2. Restaurant Merchant Responsibilities",
@@ -55,7 +55,7 @@ export const legalData = {
   },
   "about-us": {
     title: "About Keeto",
-    subtitle: "The connected operating system built specifically for restaurants",
+    subtitle: "The connected restaurant operations management platform built specifically for service teams",
     updated: "Empowering food businesses worldwide",
     sections: [
       {
@@ -83,7 +83,7 @@ export const legalData = {
     sections: [
       {
         heading: "1. Data Collection & Usage",
-        content: `Keeto collects necessary administrative data from restaurant merchants (account details, billing contacts) to provide and maintain our SaaS platform services. Diner ordering data is processed solely on behalf of the restaurant merchant.`
+        content: `Keeto collects necessary administrative data from restaurant merchants (account details, billing contacts) to provide and maintain our restaurant operations management platform services. Diner ordering data is processed solely on behalf of the restaurant merchant.`
       },
       {
         heading: "2. Data Privacy Guarantee",
