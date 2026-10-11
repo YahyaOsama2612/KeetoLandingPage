@@ -60,7 +60,7 @@ export default function Footer() {
                 <FaInstagram size={14} />
               </a>
               <a
-                href="https://www.facebook.com/keetoapp"
+                href="https://facebook.com/keetofoodapp"
                 target="_blank"
                 rel="noreferrer noopener"
                 aria-label="Facebook"
