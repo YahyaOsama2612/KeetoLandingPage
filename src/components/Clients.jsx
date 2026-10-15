@@ -177,36 +177,24 @@ export default function Clients() {
               return (
                 <article
                   key={restaurant.id ?? restaurant.logo ?? label}
-                  className={`flex flex-col rounded-[1.75rem_1.75rem_1.75rem_0.65rem] border border-white bg-white p-3 shadow-[0_12px_35px_rgba(17,24,39,0.08)] ring-1 ring-gray-200/70 sm:p-5 ${
+                  className={`flex flex-col rounded-[1.75rem] border border-white bg-white p-3 shadow-[0_12px_35px_rgba(17,24,39,0.08)] ring-1 ring-gray-200/70 sm:p-5 ${
                     mobileColumns === 2
                       ? "min-w-0"
                       : "min-h-72"
                   }`}
                 >
                   <div
-                    className={`relative flex items-center justify-center overflow-hidden rounded-[1.4rem_1.4rem_0.45rem_1.4rem] border border-amber-100 bg-gradient-to-br from-amber-50 via-white to-orange-50 p-3 sm:p-5 ${
-                      mobileColumns === 2
-                        ? "aspect-square sm:aspect-auto sm:min-h-48"
-                        : "h-36 sm:h-48"
-                    }`}
+                    className="relative flex aspect-square items-center justify-center overflow-hidden rounded-[1.5rem] border border-amber-100 bg-white p-1"
                   >
-                    <span
-                      aria-hidden="true"
-                      className="absolute -right-5 -top-7 h-20 w-20 rounded-full border-[10px] border-primary/15 sm:h-28 sm:w-28 sm:border-[14px]"
-                    />
                     {restaurant.logo ? (
                       <img
                         src={restaurant.logo}
                         alt={`${label} logo`}
                         loading="lazy"
-                        className={`relative z-10 max-w-full object-contain ${
-                          mobileColumns === 2
-                            ? "max-h-20 sm:max-h-36"
-                            : "max-h-28 sm:max-h-44"
-                        }`}
+                        className="h-full w-full object-contain"
                       />
                     ) : (
-                      <span className="relative z-10 text-xs text-gray-500 sm:text-sm">
+                      <span className="text-xs text-gray-500 sm:text-sm">
                         No logo
                       </span>
                     )}
