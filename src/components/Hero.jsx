@@ -1,10 +1,12 @@
-import { motion } from "framer-motion";
 import { HiArrowRight, HiPlay } from "react-icons/hi2";
 import { FaStar } from "react-icons/fa";
 import Reveal from "./Reveal";
 import heroImage from "../assets/image_2022_05_06T11_30_27_643Z (1).png";
 
 export default function Hero() {
+  const isClientsPage =
+    window.location.pathname.replace(/\/+$/, "") === "/clients";
+
   return (
     <section
       id="top"
@@ -46,14 +48,14 @@ export default function Hero() {
             className="mt-9 flex flex-wrap items-center gap-4"
           >
             <a
-              href="#clients"
+              href={isClientsPage ? "/#contact" : "#contact"}
               className="group inline-flex items-center gap-2 rounded-xl bg-primary hover:bg-primary-hover text-secondary font-semibold px-7 py-3.5 shadow-[0_10px_25px_rgba(250,204,21,0.4)] transition-all hover:-translate-y-0.5"
             >
               Start free trial
               <HiArrowRight className="transition-transform group-hover:translate-x-1" />
             </a>
             <a
-              href="#journey"
+              href={isClientsPage ? "/#journey" : "#journey"}
               className="inline-flex items-center gap-2 rounded-xl border border-white/30 bg-white/10 px-7 py-3.5 font-semibold text-white hover:border-white transition-colors"
             >
               <span className="w-8 h-8 rounded-full bg-white/20 text-white flex items-center justify-center">
@@ -67,10 +69,10 @@ export default function Hero() {
             delay={0.32}
             className="mt-12 flex flex-wrap items-center gap-8 text-white/90"
           >
-            <div>
+           {/*  <div>
               <p className="text-2xl font-extrabold">1,200+</p>
               <p className="text-sm text-white/70">Restaurants onboard</p>
-            </div>
+            </div> */}
             <div className="w-px h-10 bg-white/20" />
             <div>
               <p className="text-2xl font-extrabold">98%</p>

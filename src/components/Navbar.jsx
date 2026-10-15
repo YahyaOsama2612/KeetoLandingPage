@@ -16,6 +16,9 @@ const links = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const isClientsPage =
+    window.location.pathname.replace(/\/+$/, "") === "/clients";
+  const sectionHref = (href) => (isClientsPage ? `/${href}` : href);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -34,7 +37,7 @@ export default function Navbar() {
     >
       <nav className="max-w-7xl mx-auto flex items-center justify-between px-5 sm:px-8 py-4">
         <a
-          href="#top"
+          href={sectionHref("#top")}
           className="flex items-center gap-2 font-bold text-lg text-secondary"
         >
           <img src={logo} alt="Keeto logo" className="h-9 w-auto" />
@@ -48,7 +51,7 @@ export default function Navbar() {
           {links.map((l) => (
             <li key={l.href}>
               <a
-                href={l.href}
+                href={sectionHref(l.href)}
                 className="hover:text-secondary transition-colors"
               >
                 {l.label}
@@ -58,13 +61,13 @@ export default function Navbar() {
         </ul>
         <div className="hidden lg:flex items-center gap-3">
           {/*  <a
-            href="#contact"
+            href={sectionHref("#contact")}
             className="text-sm font-semibold text-secondary hover:text-accent transition-colors"
           >
             Log in
           </a> */}
           <a
-            href="#contact"
+            href={isClientsPage ? "/#contact" : "#contact"}
             className="rounded-xl bg-primary hover:bg-primary-hover text-secondary font-semibold text-sm px-5 py-2.5 shadow-[0_8px_20px_rgba(250,204,21,0.35)] transition-all hover:-translate-y-0.5 active:translate-y-0"
           >
             Get started free
@@ -112,7 +115,7 @@ export default function Navbar() {
                 {links.map((l) => (
                   <li key={l.href}>
                     <a
-                      href={l.href}
+                      href={sectionHref(l.href)}
                       onClick={() => setOpen(false)}
                       className="hover:text-secondary"
                     >

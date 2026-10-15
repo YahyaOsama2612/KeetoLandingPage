@@ -31,6 +31,8 @@ const legalLinks = [
 
 export default function Footer() {
   const [activeLegalTab, setActiveLegalTab] = useState(null);
+  const isClientsPage =
+    window.location.pathname.replace(/\/+$/, "") === "/clients";
 
   const closeLegal = useCallback(() => setActiveLegalTab(null), []);
 
@@ -40,7 +42,7 @@ export default function Footer() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-10">
           <div className="lg:col-span-2">
             <a
-              href="#top"
+              href={isClientsPage ? "/#top" : "#top"}
               className="flex items-center gap-2 font-bold text-lg"
             >
               <img src={logo} alt="Keeto logo" className="h-9 w-auto" />
@@ -87,7 +89,7 @@ export default function Footer() {
                       </button>
                     ) : (
                       <a
-                        href={l.href}
+                        href={isClientsPage ? `/${l.href}` : l.href}
                         className="text-sm text-white/60 hover:text-primary transition-colors"
                       >
                         {l.label}

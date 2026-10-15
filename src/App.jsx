@@ -13,7 +13,16 @@ import Footer from './components/Footer'
 
 function App() {
   if (window.location.pathname.replace(/\/+$/, '') === '/clients') {
-    return <Clients />
+    return (
+      <div className="min-h-screen bg-white">
+        <Navbar />
+        <main>
+          <Hero />
+          <Clients />
+        </main>
+        <Footer />
+      </div>
+    )
   }
 
   return (
