@@ -46,6 +46,7 @@ export default function Clients() {
   const [error, setError] = useState(null);
   const [expanded, setExpanded] = useState(false);
   const [search, setSearch] = useState("");
+  const [mobileColumns, setMobileColumns] = useState(1);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -124,6 +125,27 @@ export default function Clients() {
               className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-secondary shadow-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/30"
             />
           </div>
+          <div
+            role="group"
+            aria-label="Client card layout on small screens"
+            className="mt-4 inline-flex rounded-xl border border-gray-200 bg-white p-1"
+          >
+            {[1, 2].map((columns) => (
+              <button
+                key={columns}
+                type="button"
+                aria-pressed={mobileColumns === columns}
+                onClick={() => setMobileColumns(columns)}
+                className={`rounded-lg px-3 py-2 text-xs font-semibold sm:text-sm ${
+                  mobileColumns === columns
+                    ? "bg-primary text-secondary"
+                    : "text-gray-600 hover:text-secondary"
+                }`}
+              >
+                {columns} {columns === 1 ? "card" : "cards"} per row
+              </button>
+            ))}
+          </div>
         </header>
 
         {loading ? (
@@ -138,7 +160,13 @@ export default function Clients() {
             {error}
           </div>
         ) : (
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div
+            className={`grid ${
+              mobileColumns === 2
+                ? "grid-cols-2 sm:grid-cols-2 lg:grid-cols-3"
+                : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+            } gap-3 sm:gap-6`}
+          >
             {visibleRestaurants.map((restaurant) => {
               const label =
                 restaurant.nameFr ||
@@ -149,30 +177,64 @@ export default function Clients() {
               return (
                 <article
                   key={restaurant.id ?? restaurant.logo ?? label}
-                  className="flex min-h-72 flex-col overflow-hidden rounded-3xl border border-gray-200 bg-white p-5 shadow-sm"
+                  className={`flex flex-col rounded-[1.75rem_1.75rem_1.75rem_0.65rem] border border-white bg-white p-3 shadow-[0_12px_35px_rgba(17,24,39,0.08)] ring-1 ring-gray-200/70 sm:p-5 ${
+                    mobileColumns === 2
+                      ? "min-w-0"
+                      : "min-h-72"
+                  }`}
                 >
-                  <div className="flex min-h-48 flex-1 items-center justify-center rounded-2xl border border-gray-100 bg-white p-5">
+                  <div
+                    className={`relative flex items-center justify-center overflow-hidden rounded-[1.4rem_1.4rem_0.45rem_1.4rem] border border-amber-100 bg-gradient-to-br from-amber-50 via-white to-orange-50 p-3 sm:p-5 ${
+                      mobileColumns === 2
+                        ? "aspect-square sm:aspect-auto sm:min-h-48"
+                        : "h-36 sm:h-48"
+                    }`}
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="absolute -right-5 -top-7 h-20 w-20 rounded-full border-[10px] border-primary/15 sm:h-28 sm:w-28 sm:border-[14px]"
+                    />
                     {restaurant.logo ? (
                       <img
                         src={restaurant.logo}
                         alt={`${label} logo`}
                         loading="lazy"
-                        className="max-h-44 max-w-full object-contain"
+                        className={`relative z-10 max-w-full object-contain ${
+                          mobileColumns === 2
+                            ? "max-h-20 sm:max-h-36"
+                            : "max-h-28 sm:max-h-44"
+                        }`}
                       />
                     ) : (
-                      <span className="text-sm text-gray-500">No logo</span>
+                      <span className="relative z-10 text-xs text-gray-500 sm:text-sm">
+                        No logo
+                      </span>
                     )}
                   </div>
-                  <h2 className="mt-4 truncate text-center text-sm font-semibold text-secondary">
+                  <h2
+                    className={`mt-3 truncate text-center font-semibold text-secondary sm:mt-4 sm:text-sm ${
+                      mobileColumns === 2
+                        ? "text-xs"
+                        : "text-sm"
+                    }`}
+                  >
                     {label}
                   </h2>
-                  <div className="mt-4 grid grid-cols-4 gap-2">
+                  <div
+                    className={`mt-3 grid grid-cols-4 sm:mt-4 ${
+                      mobileColumns === 2 ? "gap-1.5 sm:gap-2" : "gap-2"
+                    }`}
+                  >
                     {LINK_OPTIONS.map(({ key, label: linkLabel, Icon }) => {
                       const href = getExternalUrl(
                         MANUAL_LINKS[restaurant.id]?.[key] ?? restaurant[key],
                       );
                       const iconClassName =
-                        "flex h-11 items-center justify-center rounded-xl border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2";
+                        `flex items-center justify-center rounded-xl border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 ${
+                          mobileColumns === 2
+                            ? "h-9 sm:h-11"
+                            : "h-11"
+                        }`;
 
                       return href ? (
                         <a
@@ -184,7 +246,10 @@ export default function Clients() {
                           title={linkLabel}
                           className={`${iconClassName} border-gray-200 text-gray-600 hover:border-primary hover:bg-primary/10 hover:text-secondary`}
                         >
-                          <Icon aria-hidden="true" size={17} />
+                          <Icon
+                            aria-hidden="true"
+                            size={mobileColumns === 2 ? 15 : 17}
+                          />
                         </a>
                       ) : (
                         <span
@@ -193,7 +258,10 @@ export default function Clients() {
                           title={`${linkLabel} unavailable`}
                           className={`${iconClassName} cursor-not-allowed border-gray-100 bg-gray-50 text-gray-300`}
                         >
-                          <FaLock aria-hidden="true" size={14} />
+                          <FaLock
+                            aria-hidden="true"
+                            size={mobileColumns === 2 ? 12 : 14}
+                          />
                         </span>
                       );
                     })}
