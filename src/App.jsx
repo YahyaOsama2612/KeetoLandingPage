@@ -12,12 +12,15 @@ import Contact from './components/Contact'
 import Footer from './components/Footer'
 
 function App() {
+  if (window.location.pathname.replace(/\/+$/, '') === '/clients') {
+    return <Clients />
+  }
+
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
       <main>
         <Hero />
-       {/*  <Clients /> */}
         <Features />
         <About />
         <Pricing />

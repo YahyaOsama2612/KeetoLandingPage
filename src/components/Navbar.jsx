@@ -64,7 +64,7 @@ export default function Navbar() {
             Log in
           </a> */}
           <a
-            href="#clients"
+            href="#contact"
             className="rounded-xl bg-primary hover:bg-primary-hover text-secondary font-semibold text-sm px-5 py-2.5 shadow-[0_8px_20px_rgba(250,204,21,0.35)] transition-all hover:-translate-y-0.5 active:translate-y-0"
           >
             Get started free
