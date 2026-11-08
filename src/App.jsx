@@ -11,6 +11,7 @@ import FAQ from './components/FAQ'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 
+
 function App() {
   if (window.location.pathname.replace(/\/+$/, '') === '/clients') {
     return (
@@ -30,6 +31,7 @@ function App() {
       <Navbar />
       <main>
         <Hero />
+        <Clients />
         <Features />
         <About />
         <Pricing />
