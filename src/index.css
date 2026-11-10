@@ -31,6 +31,57 @@ body {
   box-sizing: border-box;
 }
 
+.clients-marquee-rows {
+  display: grid;
+  gap: 1.5rem;
+  overflow: hidden;
+}
+
+.clients-marquee {
+  overflow: hidden;
+}
+
+.clients-marquee-track {
+  display: flex;
+  width: max-content;
+  flex: none;
+}
+
+.clients-marquee-group {
+  display: flex;
+  flex: none;
+  gap: 3rem;
+  padding-right: 3rem;
+}
+
+.clients-marquee-track-right {
+  animation: clients-marquee-right 18s linear infinite;
+}
+
+.clients-marquee-track-left {
+  animation: clients-marquee-left 18s linear infinite;
+}
+
+@keyframes clients-marquee-right {
+  from {
+    transform: translateX(-50%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes clients-marquee-left {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 ::selection {
   background: var(--color-primary);
   color: var(--color-secondary);

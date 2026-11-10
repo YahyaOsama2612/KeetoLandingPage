@@ -1,6 +1,7 @@
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Clients from './components/Clients'
+import ClientsMarquee from './components/ClientsMarquee'
 import Features from './components/Features'
 import About from './components/About'
 import Pricing from './components/Pricing'
@@ -20,6 +21,7 @@ function App() {
         <main>
           <Hero />
           <Clients />
+          <ClientsMarquee />
         </main>
         <Footer />
       </div>
@@ -31,7 +33,7 @@ function App() {
       <Navbar />
       <main>
         <Hero />
-        <Clients />
+        <ClientsMarquee />
         <Features />
         <About />
         <Pricing />
